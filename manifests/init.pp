@@ -51,4 +51,8 @@ class syslogd (
     enable => $service_enable,
     flags  => $service_flags,
   }
+
+  Class['syslogd::config'] ~>
+  Class['syslogd::service']
+
 }

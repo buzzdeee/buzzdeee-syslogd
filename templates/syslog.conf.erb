@@ -28,7 +28,7 @@ mail.info						/var/log/maillog
 # (This is also required to log info from things like routers and
 # ISDN-equipment).  If you run -u, you are vulnerable to syslog bombing,
 # and should consider blocking external syslog packets.
-<% if @loghost -%>
+<% if @loghost and @loghost != false -%>
 *.notice;auth,authpriv,cron,ftp,kern,lpr,mail,user.none	@<%= @loghost %>
 auth,daemon,syslog,user.info;authpriv,kern.debug		@<%= @loghost %>
 <% end -%>
