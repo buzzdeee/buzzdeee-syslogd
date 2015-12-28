@@ -35,7 +35,20 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-class syslogd {
+class syslogd (
+  $service_ensure = $::syslogd::params::service_ensure,
+  $service_enable = $::syslogd::params::service_enable,
+  $service_flags  = undef,
+  $loghost        = undef,
+) inherits syslogd::params {
 
+  class { 'syslogd::config':
+    loghost => $loghost,
+  }
 
+  class { 'syslogd::service':
+    ensure => $service_ensure,
+    enable => $service_enable,
+    flags  => $service_flags,
+  }
 }
