@@ -11,6 +11,7 @@ ftp.info						/var/log/xferlog
 lpr.debug						/var/log/lpd-errs
 mail.info						/var/log/maillog
 #uucp.info						/var/log/uucp
+local2.info						/var/log/pf.log
 
 # Uncomment this line to send "important" messages to the system
 # console: be aware that this could create lots of output.
@@ -29,7 +30,7 @@ mail.info						/var/log/maillog
 # ISDN-equipment).  If you run -u, you are vulnerable to syslog bombing,
 # and should consider blocking external syslog packets.
 <% if @loghost and @loghost != false -%>
-*.notice;auth,authpriv,cron,ftp,kern,lpr,mail,user.none	@<%= @loghost %>
+*.info;auth,authpriv,cron,ftp,kern,lpr,mail,user.none	@<%= @loghost %>
 auth,daemon,syslog,user.info;authpriv,kern.debug		@<%= @loghost %>
 <% end -%>
 
