@@ -11,7 +11,11 @@ ftp.info						/var/log/xferlog
 lpr.debug						/var/log/lpd-errs
 mail.info						/var/log/maillog
 #uucp.info						/var/log/uucp
-local2.info						/var/log/pf.log
+<% if @custom_logs -%>
+<% @custom_logs.each do |type, values| -%>
+<%= type %>						<%= values['logfile'] %>
+<% end -%>
+<% end -%>
 
 # Uncomment this line to send "important" messages to the system
 # console: be aware that this could create lots of output.

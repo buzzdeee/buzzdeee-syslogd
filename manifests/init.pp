@@ -40,10 +40,12 @@ class syslogd (
   $service_enable = $::syslogd::params::service_enable,
   $service_flags  = undef,
   $loghost        = undef,
+  $custom_logs    = {},
 ) inherits syslogd::params {
 
   class { 'syslogd::config':
-    loghost => $loghost,
+    custom_logs => $custom_logs,
+    loghost     => $loghost,
   }
 
   class { 'syslogd::service':
